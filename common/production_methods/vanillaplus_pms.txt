@@ -23,7 +23,7 @@
 		}
 	}
 }
-#test
+
 pm_hydrogenation = {
 	texture = "gfx/interface/icons/production_method_icons/nitroglycerin.dds"
 	
