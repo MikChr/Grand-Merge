@@ -1,0 +1,211 @@
+﻿namespace = vanillaplus_extremism_events
+
+
+vanillaplus_extremism_events.1 = {
+	type = country_event
+	placement = root
+	title = vanillaplus_extremism_events.1.t
+	desc = vanillaplus_extremism_events.1.d
+	flavor = vanillaplus_extremism_events.1.f
+
+	duration = 3
+
+	event_image = {
+		video = "gfx/event_pictures/europenorthamerica_political_extremism.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/europenorthamerica/political_extremism"
+
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	trigger = {
+		has_law = law_type:law_cult_of_personality
+		NOT = { has_variable = cult_inauguration_var }
+		ruler = {
+			AND = {
+				NOT = { has_ideology = ideology_vanguardist }
+				NOT = { has_ideology = ideology_fascist }
+			}
+		}
+	}
+	
+	immediate = {
+		ruler = {
+			save_scope_as = dictator
+		}
+		ruler.interest_group = {
+			save_scope_as = dictator_ig
+		}
+		ruler.interest_group = {
+			leader = {
+				save_scope_as = dictator_ig_leader
+			}
+		}
+		set_variable = cult_inauguration_var
+	}
+
+	option = {
+		name = vanillaplus_extremism_events.1.a
+		default_option = yes
+		trigger = {
+			has_law = law_type:law_council_republic
+		}
+		scope:dictator = {
+				set_ideology = ideology_vanguardist
+			}
+		scope:dictator = {
+			add_modifier = {
+				name = cult_of_personality_character_modifier
+			}
+		}
+		ruler.interest_group = {
+			leader = {
+				set_ideology = ideology_vanguardist
+			}
+		}
+		ruler.interest_group = {
+			leader = {
+				add_modifier = {
+				name = cult_of_personality_character_modifier
+				}
+			}
+		}
+		remove_variable = cult_inauguration_var
+	}
+	option = {
+		name = vanillaplus_extremism_events.1.b
+		default_option = yes
+		trigger = {
+			NOT = { has_law = law_type:law_council_republic }
+		}
+		scope:dictator = {
+				set_ideology = ideology_fascist
+		}
+		scope:dictator = {
+			add_modifier = {
+				name = cult_of_personality_character_modifier
+			}
+		}
+		ruler.interest_group = {
+			leader = {
+				set_ideology = ideology_fascist
+			}
+		}
+		ruler.interest_group = {
+			leader = {
+				add_modifier = {
+				name = cult_of_personality_character_modifier
+				}
+			}
+		}
+		remove_variable = cult_inauguration_var
+	}
+	
+	option = {
+		name = vanillaplus_extremism_events.1.c
+		activate_law = law_type:law_autocracy
+		#Keep ideology
+	}
+}
+
+vanillaplus_extremism_events.2 = {
+	type = country_event
+	placement = root
+	title = vanillaplus_extremism_events.2.t
+	desc = vanillaplus_extremism_events.2.d
+	flavor = vanillaplus_extremism_events.2.f
+
+	duration = 3
+
+	event_image = {
+		video = "gfx/event_pictures/europenorthamerica_political_extremism.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/europenorthamerica/political_extremism"
+
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+	
+	immediate = {
+		ruler.interest_group = {
+			leader = {
+				save_scope_as = dictator_ig_leader
+			}
+		}
+		ruler = {
+			save_scope_as = dictator
+		}
+		set_variable = cult_purge_var
+	}
+
+	trigger = {
+		has_law = law_type:law_cult_of_personality
+		ruler = {
+			OR = {
+				has_ideology = ideology_vanguardist
+				has_ideology = ideology_fascist
+			}
+		}
+		ruler.interest_group = {
+			leader = {
+				AND = {
+					NOT = { has_ideology = ideology_vanguardist }
+					NOT = { has_ideology = ideology_fascist }
+				}
+			}
+		}
+	}
+
+	option = {
+		name = vanillaplus_extremism_events.2.a
+		trigger = {
+			has_law = law_type:law_council_republic
+		}
+		ruler.interest_group = {
+			leader = {
+				set_ideology = ideology_vanguardist
+			}
+		}
+		ruler.interest_group = {
+			leader = {
+				add_modifier = {
+				name = cult_of_personality_character_modifier
+				}
+			}
+		}
+		remove_variable = cult_purge_var
+	}
+	option = {
+		name = vanillaplus_extremism_events.2.b
+		trigger = {
+			NOT = { has_law = law_type:law_council_republic }
+		}
+		ruler.interest_group = {
+			leader = {
+				set_ideology = ideology_fascist
+			}
+		}
+		ruler.interest_group = {
+			leader = {
+				add_modifier = {
+				name = cult_of_personality_character_modifier
+				}
+			}
+		}
+		remove_variable = cult_purge_var
+	}
+	option = {
+		name = vanillaplus_extremism_events.2.c
+		#Keep ideology
+		ruler.interest_group = {
+			leader = {
+				add_modifier = {
+				name = cult_of_personality_character_modifier
+				months = normal_modifier_time
+				}
+			}
+		}
+	}
+}
+

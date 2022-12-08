@@ -1,0 +1,167 @@
+﻿namespace = dynamic_interest_groups_flavor
+
+
+##############################
+# Flavour and Fixes
+##############################
+
+# Turning the Red Army back to the normal armed forces
+dynamic_interest_groups_flavor.1 = {
+	type = country_event
+	placement = root
+	title = dynamic_interest_groups_flavor.1.t
+	desc = dynamic_interest_groups_flavor.1.d
+	flavor = dynamic_interest_groups_flavor.1.f
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_military_parade.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/military_parade"
+	
+	trigger = {
+		NOT = { has_law = law_type:law_council_republic }
+		NOT = { has_variable = red_army_purged_var }
+		ig:ig_armed_forces = {
+			has_ideology = ideology_proletarian
+		}
+		ig:ig_armed_forces = {
+			leader = {
+				AND = {
+					NOT = { has_ideology = ideology_communist }
+					NOT = { has_ideology = ideology_vanguardist }
+				}
+			}
+		}
+	}
+
+	immediate = {
+		set_variable = red_army_purged_var
+	}
+
+	option = {
+		name = dynamic_interest_groups_flavor.1.a
+		ig:ig_armed_forces = {
+			custom_tooltip = red_army_purged_tt
+			hidden_effect = {
+				set_interest_group_name = ig_armed_forces
+			}
+			remove_ideology= ideology_proletarian
+			add_ideology = ideology_loyalist
+		}
+		remove_variable = red_army_purged_var
+	}
+}
+
+
+# Turning the Armed Forces supportive of fascist policies
+dynamic_interest_groups_flavor.2 = {
+	type = country_event
+	placement = root
+	title = dynamic_interest_groups_flavor.2.t
+	desc = dynamic_interest_groups_flavor.2.d
+	flavor = dynamic_interest_groups_flavor.2.f
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_military_parade.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/military_parade"
+	
+	trigger = {
+		ruler = {
+			has_ideology = ideology_fascist
+		}
+		NOT = {	has_variable = fascist_army_var }
+		ig:ig_armed_forces = {
+			leader = {
+				OR = {
+					has_ideology = ideology_fascist
+					has_ideology = ideology_ethno_nationalist
+				}
+			}
+		}
+	}
+
+	immediate = {
+		set_variable = fascist_army_var
+	}
+
+	option = {
+		name = dynamic_interest_groups_flavor.2.a
+		ig:ig_armed_forces = {
+			custom_tooltip = fascist_army_tt
+			hidden_effect = {
+				set_interest_group_name = ig_fascist_army
+			}
+			remove_ideology= ideology_loyalist
+			add_ideology = ideology_supremacists
+		}
+	}
+}
+
+# Turning the Fascist Army back to the normal armed forces
+dynamic_interest_groups_flavor.3 = {
+	type = country_event
+	placement = root
+	title = dynamic_interest_groups_flavor.3.t
+	desc = dynamic_interest_groups_flavor.3.d
+	flavor = dynamic_interest_groups_flavor.3.f
+
+	duration = 3
+
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_military_parade.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/unspecific/military_parade"
+	
+	trigger = {
+		ruler = {
+			NOT = { has_ideology = ideology_fascist }
+		}
+		NOT = { has_variable = fascist_army_purged_var }
+		ig:ig_armed_forces = {
+			has_ideology = ideology_supremacists
+		}
+		ig:ig_armed_forces = {
+			leader = {
+				AND = {
+					NOT = { has_ideology = ideology_fascist }
+					NOT = { has_ideology = ideology_ethno_nationalist }
+				}
+			}
+		}
+	}
+
+	immediate = {
+		set_variable = fascist_army_purged_var
+	}
+
+	option = {
+		name = dynamic_interest_groups_flavor.3.a
+		ig:ig_armed_forces = {
+			custom_tooltip = fascist_army_purged_tt
+			hidden_effect = {
+				set_interest_group_name = ig_armed_forces
+			}
+			remove_ideology= ideology_supremacists
+			add_ideology = ideology_loyalist
+		}
+		remove_variable = fascist_army_purged_var
+		remove_variable = fascist_army_var
+	}
+}

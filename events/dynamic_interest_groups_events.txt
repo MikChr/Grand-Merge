@@ -1,0 +1,52 @@
+﻿namespace = dynamic_interest_group_events
+
+
+######################
+# Journal Events
+#####################
+
+dynamic_interest_group_events.1 = {
+	type = country_event
+	placement = root
+	title = dynamic_interest_group_events.1.t
+	desc = dynamic_interest_group_events.1.d
+	flavor = dynamic_interest_group_events.1.f
+
+	duration = 3
+
+	event_image = {
+		video = "gfx/event_pictures/europenorthamerica_london_center.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/europenorthamerica/london_center"
+
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	trigger = {
+		# triggered by je_cosmopolitanism
+	}
+
+	option = {
+		name = dynamic_interest_group_events.1.a
+		default_option = yes
+		ig:ig_intelligentsia = {
+			remove_ideology = ideology_liberal
+			add_ideology = ideology_cosmopolitan
+		}
+		custom_tooltip = {
+			text = liberals_turned_cosmopolitan
+			set_variable = liberals_turned_cosmopolitan_var
+		}
+	}
+	option = {
+		name = dynamic_interest_group_events.1.b
+		ig:ig_intelligentsia = {
+			add_modifier = {
+				name = defended_legal_discrimination
+				months = normal_modifier_time
+			}
+		}
+		# you want racists in power!
+	}
+}
