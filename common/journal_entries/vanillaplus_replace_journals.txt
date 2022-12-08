@@ -1,0 +1,312 @@
+﻿#########################
+##### 00_liberalism #####
+#########################
+# The New Colossus
+
+je_liberalism_4 = {
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	complete = {
+		OR = {
+			has_law = law_type:law_freedom_of_conscience
+			has_law = law_type:law_total_separation
+		}
+		OR = {
+			has_law = law_type:law_multicultural
+			has_law = law_type:law_cultural_exclusion
+		}
+		has_law = law_type:law_slavery_banned
+		has_law = law_type:law_no_migration_controls
+		average_sol >= 12
+	}
+	
+	on_complete = {
+		trigger_event = { id = liberalism.4 }
+	}
+	
+	weight = 5000
+}
+
+###########################
+##### 00_belle_epoque #####
+###########################
+
+je_belle_epoque = {
+	icon = "gfx/interface/icons/event_icons/event_map.dds"
+
+	is_shown_when_inactive = {
+		has_technology_researched = mechanized_workshops
+		has_technology_researched = realism
+		has_technology_researched = electrical_generation
+		country_rank >= rank_value:major_power
+		owns_entire_state_region = STATE_ILE_DE_FRANCE
+	}
+
+	possible = {
+		owns_entire_state_region = STATE_ILE_DE_FRANCE
+		is_at_war = no
+		
+		capital = {
+			any_scope_building = {
+				is_building_type = building_urban_center
+				level >= 40
+				has_active_production_method = pm_electric_streetlights				
+			}
+			devastation = 0
+			turmoil < 0.1
+		}
+		
+		any_scope_state = {
+			any_scope_building = {
+				is_building_type = building_arts_academy
+				level >= 10
+				has_active_production_method = pm_photographic_art
+			}
+		}
+		
+		any_scope_state = {
+			any_scope_building = {
+				is_building_type = building_university
+				level >= 10
+				has_active_production_method = pm_philosophy_department
+			}
+		}
+	}
+
+	immediate = {
+		set_variable = {
+			name = belle_epoque_var
+			value = 0
+		}
+	}
+	
+	status_desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					owns_entire_state_region = STATE_ILE_DE_FRANCE
+					any_scope_state = {
+						has_building = building_eiffel_tower
+					}
+				}
+				desc = je_belle_epoque_eiffel_loc
+			}
+			triggered_desc = {
+				trigger = {
+					NOR = {
+						owns_entire_state_region = STATE_ILE_DE_FRANCE
+						any_scope_state = {
+							has_building = building_eiffel_tower
+						}
+					}
+				}
+				desc = je_belle_epoque_no_eiffel_loc
+			}
+		}
+	}
+	
+	current_value = {
+		value = var:belle_epoque_var
+	}
+	
+	goal_add_value = {
+		add = 36 #3 years timeout
+	}
+
+	complete = {
+		scope:journal_entry = {
+			is_goal_complete = yes
+		}
+	}
+
+	on_complete = {
+	}
+
+	on_weekly_pulse = {
+		events = {
+			belle_epoque_events.1 # eiffel tower complete
+		}
+	}
+
+	on_monthly_pulse = {
+		random_events = {
+			20 = 0
+			20 = belle_epoque_events.2 # art nouveau
+			20 = belle_epoque_events.3 # symbolists
+			20 = belle_epoque_events.4 # cabaret
+		}
+		effect = {
+			change_variable = {
+				name = belle_epoque_var
+				add = 1
+			}
+		}
+	}
+
+	invalid = {
+		NOT = { owns_entire_state_region = STATE_ILE_DE_FRANCE }
+	}
+	
+	progressbar = yes
+
+	weight = 10
+}
+
+
+
+####################################################
+##### 00_player_objectives_egalitarian_society #####
+####################################################
+
+je_pass_laws = {
+	should_be_pinned_by_default = yes
+	icon = "gfx/interface/icons/objectives/egalitarian_society.dds"
+	
+	complete = {
+		NOT = { has_law = law_type:law_state_religion }
+		has_law = law_type:law_public_schools
+		has_law = law_type:law_protected_speech
+	}
+
+	is_progressing = {
+		OR = {
+			is_enacting_law = law_type:law_freedom_of_conscience
+			is_enacting_law = law_type:law_total_separation
+			is_enacting_law = law_type:law_public_schools
+			is_enacting_law = law_type:law_protected_speech
+		}
+	}
+
+	weight = 1001
+	inheritable = yes
+}
+
+je_public_services = {
+	should_be_pinned_by_default = yes
+	icon = "gfx/interface/icons/objectives/egalitarian_society.dds"
+	
+	complete = {
+		institution_investment_level = {
+			institution = institution_schools
+			value >= 3
+		}
+		institution_investment_level = {
+			institution = institution_health_system
+			value >= 3
+		}
+		institution_investment_level = {
+			institution = institution_social_security
+			value >= 3
+		}
+		institution_investment_level = {
+			institution = institution_workplace_safety
+			value >= 3
+		}
+	}
+
+	is_progressing = {
+		OR = {
+			expanding_institution = institution_schools
+			expanding_institution = institution_health_system
+			expanding_institution = institution_social_security
+			expanding_institution = institution_workplace_safety
+		}
+	}
+
+	invalid = {
+		NOT = {
+			has_law = law_type:law_public_schools
+			has_law = law_type:law_protected_speech
+		}
+		has_law = law_type:law_state_religion
+	}
+	on_invalid = {
+		remove_active_objective_subgoal = sg_public_services
+	}
+	
+	weight = 1002
+	inheritable = yes
+}
+
+je_women_and_children = {
+	should_be_pinned_by_default = yes
+	icon = "gfx/interface/icons/objectives/egalitarian_society.dds"
+	
+	complete = {
+		has_law = law_type:law_compulsory_primary_school
+		has_law = law_type:law_womens_suffrage
+	}
+
+	is_progressing = {
+		or = {
+			is_enacting_law = law_type:law_compulsory_primary_school
+			is_enacting_law = law_type:law_womens_suffrage
+		}
+	}
+
+	invalid = {
+		NOT = {
+			has_law = law_type:law_public_schools
+			has_law = law_type:law_protected_speech
+		}
+		has_law = law_type:law_state_religion
+	}
+	on_invalid = {
+		remove_active_objective_subgoal = sg_women_and_children
+	}
+	
+	weight = 1004
+	inheritable = yes
+}
+
+je_egalitarian_society = {
+	should_be_pinned_by_default = yes
+	icon = "gfx/interface/icons/objectives/egalitarian_society.dds"
+	active_update_frequency = 1
+	
+	complete = {
+		game_date > 1935.12.30
+		pop_type_percent_country = {
+			pop_type = peasants
+			percent < 0.1
+		}
+		root.average_sol >= 20
+		literacy_rate >= 0.9
+		has_law = law_type:law_multicultural
+	}
+
+	is_progressing = {
+		OR = {
+			expanding_institution = institution_schools
+			expanding_institution = institution_health_system
+			expanding_institution = institution_social_security
+			expanding_institution = institution_workplace_safety
+		}
+	}
+
+	invalid = {
+		NOT = {
+			has_law = law_type:law_public_schools
+			has_law = law_type:law_protected_speech
+		}
+		has_law = law_type:law_state_religion
+	}
+	
+	on_invalid = {
+		remove_active_objective_subgoal = sg_egalitarian_society
+	}
+
+	on_complete = {
+		hidden_effect = {
+			owner = {
+				start_tutorial_lesson = { 
+					tutorial_lesson = egalitarian_society_complete
+					journal_entry = je:je_egalitarian_society
+				}
+			}
+		}
+	}
+
+	weight = 1005
+	inheritable = yes
+}

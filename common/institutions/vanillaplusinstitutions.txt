@@ -1,0 +1,7 @@
+﻿institution_cult_of_personality = { # Max level from tech
+	icon = "gfx/interface/icons/ideology_icons/reactionary.dds"
+	background_texture = "gfx/interface/illustrations/institutions/colonization.dds"
+	modifier = {
+		country_authority_mult = 0.05
+	}
+}

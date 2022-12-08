@@ -1,0 +1,35 @@
+﻿# Modifiers
+teeming_shore_new_world = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_positive.dds
+	state_migration_pull_mult = 0.75
+}
+
+unincorporated_state = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_gear_negative.dds
+	state_infrastructure_mult = -0.25
+	building_group_bg_manufacturing_throughput_mult = -0.25 #industries
+	state_conscription_rate_mult = -0.90
+	state_building_barracks_max_level_add = -95
+	building_group_bg_army_throughput_mult = -0.25 #army, conscription
+	
+	state_expected_sol_mult = -0.33
+	state_pop_pol_str_mult = -0.50
+}
+
+usa_slavers_banning_slavery = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_flag_negative.dds
+	country_legitimacy_base_add = -200
+}
+
+missouri_compromise = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	interest_group_ig_landowners_pol_str_mult = 0.25
+	interest_group_ig_landowners_approval_add = -5
+}
+
+shinto_assimilation = {
+	icon = gfx/interface/icons/ideology_icons/shinto_moralist.dds
+	state_conversion_mult = 5
+}
+
+cult_of_personality_character_modifier = { }

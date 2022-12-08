@@ -1,0 +1,4 @@
+﻿
+NDiplomacy = {
+	WAR_GOAL_INFAMY_DIPLO_PLAY_BACK_DOWN_REFUND = -1 # Refund of infamy for war goals that are dropped due to one side backing down in a diplo play (applied to initiator/target)
+}

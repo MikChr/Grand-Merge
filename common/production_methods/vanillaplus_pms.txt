@@ -1,0 +1,119 @@
+﻿pm_pyrolysis = {		
+	texture = "gfx/interface/icons/production_method_icons/electric_arc_process.dds"
+	
+	pollution_generation = 20
+	
+	building_modifiers = {
+		workforce_scaled = {
+			# input goods
+			building_input_coal_add = 30  # x30 = 900
+			building_input_sulfur_add = 10 # x50 = 500
+
+			# output goods
+			building_output_oil_add = 30    # * 40 = 1200   
+		}																	
+
+			#profit = -200, only valuable if oil is expensive or inputs are cheap
+
+		level_scaled = {
+			# employment
+			building_employment_laborers_add = 1500 #  x1.0 = 1500
+			building_employment_machinists_add = 1000 # x1.5 = 1500
+			building_employment_engineers_add = 500 #  x3.0 =  1500
+		}
+	}
+}
+
+pm_hydrogenation = {
+	texture = "gfx/interface/icons/production_method_icons/nitroglycerin.dds"
+	
+	pollution_generation = 25
+
+	unlocking_technologies = {
+		compression_ignition
+	}
+	
+	building_modifiers = {
+		workforce_scaled = {
+			# input goods
+			building_input_coal_add = 60  # x30 = 1800
+			building_input_iron_add = 20 # x30 = 600
+
+			# output goods
+			building_output_oil_add = 50    # * 40 = 2000 
+		}
+
+		#profit = -400, only valuable if oil is expensive or inputs are cheap
+		
+		level_scaled = {
+			# employment
+			building_employment_laborers_add = 500   # x1.0 = 500
+			building_employment_machinists_add = 2000 # x1.5 = 3000
+			building_employment_engineers_add = 500  # x3.0 = 1500
+		}
+	}
+}
+
+
+pm_no_biofuels = {		
+	texture = "gfx/interface/icons/production_method_icons/no_distillery.dds"
+}
+
+
+pm_biofuels = {		
+	texture = "gfx/interface/icons/production_method_icons/pot_stills.dds"
+	
+	pollution_generation = 5
+
+	unlocking_technologies = {
+		improved_fertilizer
+	}
+	
+	building_modifiers = {
+		workforce_scaled = {
+			# input goods
+			building_input_grain_add = 40 # x20 = -800
+			building_input_coal_add = -20 # x30 = +600
+		}	
+
+		# more expensive, but grain is more easily available
+
+		level_scaled = {
+			# employment
+			building_employment_engineers_add = 100 # x3.0 = 300
+		}
+	}
+}
+
+pm_no_synth_rubber = {		
+	texture = "gfx/interface/icons/production_method_icons/no_orchards.dds"
+}
+
+pm_synth_rubber = {		
+	texture = "gfx/interface/icons/production_method_icons/elastics.dds"
+	
+	pollution_generation = 5
+
+	unlocking_technologies = {
+		plastics
+	}
+	
+	building_modifiers = {
+		workforce_scaled = {
+			# input goods
+			building_input_oil_add = 20 # x40 = 800
+			
+			# output goods
+			building_output_rubber_add = 20    # * 40 = 800   
+			building_output_dye_add = -20 # x40 = 800
+			
+		}
+
+			
+		level_scaled = {
+			# employment
+			building_employment_machinists_add = 500 # x1.5 = 750
+			building_employment_engineers_add = 500  # x3.0 = 1500
+		}
+	}
+}

@@ -1,0 +1,92 @@
+﻿je_annex_hokkaido = {
+		icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+	
+	is_shown_when_inactive = {
+		exists = c:JAP
+		exists = c:AIN
+		c:JAP = ROOT
+	}
+
+	possible = {
+		OR = {
+			custom_tooltip = {
+				text = has_completed_meiji_restoration
+				scope:journal_entry = {
+					is_goal_complete = yes
+				}
+				has_variable = meiji_restoration_complete
+			}
+			s:STATE_SAKHALIN= {
+				any_scope_state = {
+					owner = { NOT = { is_country_type = decentralized } }
+				}
+			}
+		}
+		OR = {
+			has_law = law_type:law_colonial_exploitation
+			has_law = law_type:law_colonial_resettlement
+		}
+		exists = c:AIN
+	}
+	
+	immediate = {
+		hidden_effect = {
+			set_variable = {
+				name = claiming_sovereignty
+				value = 0
+			}
+		}
+	}
+
+	on_monthly_pulse = {
+		effect = {
+			if = {
+				limit = {
+					OR = {
+						has_law = law_type:law_colonial_exploitation
+						has_law = law_type:law_colonial_resettlement
+					}
+				}
+				change_variable = {
+					name = claiming_sovereignty
+					add = 1
+				}
+			}
+		}
+	}
+
+	complete = {
+		scope:journal_entry = {
+			is_goal_complete = yes
+		}
+		OR = {
+			has_law = law_type:law_colonial_exploitation
+			has_law = law_type:law_colonial_resettlement
+		}
+	}
+
+	on_complete = {
+		trigger_event = {
+			id = vanillaplus_events.2
+		}
+	}
+
+	invalid = {
+		AND = {
+			NOT = { has_law = law_type:law_colonial_resettlement }
+			NOT = { has_law = law_type:law_colonial_exploitation }
+		}
+	}
+
+	current_value = {
+		value = root.var:claiming_sovereignty
+	}
+
+	goal_add_value = {
+		add = 24
+	}
+
+	progressbar = yes
+
+	weight = 100
+}

@@ -1,0 +1,77 @@
+﻿ig_trait_patriotic_fervor = {
+	icon = "gfx/interface/icons/ig_trait_icons/patriotic_fervor.dds"
+
+	# type is for display order
+	type = in_government
+
+	min_approval = loyal
+	
+	modifier = {
+		country_military_goods_cost_mult = -0.10
+	}
+}
+
+ig_trait_veteran_consultation = {
+	icon = "gfx/interface/icons/ig_trait_icons/veteran_consultation.dds"
+
+	# type is for display order
+	type = happy
+
+	min_approval = happy
+	
+	modifier = {
+		country_military_tech_spread_mult = 0.1
+	}
+}
+
+ig_trait_engines_of_progress = {
+	icon = "gfx/interface/icons/ig_trait_icons/engines_of_progress.dds"
+
+	# type is for display order
+	type = happy
+
+	min_approval = happy
+	
+	modifier = {
+		country_production_tech_spread_mult = 0.1
+	}
+}
+
+ig_trait_propagandists = {
+	icon = "gfx/interface/icons/ig_trait_icons/propagandists.dds"
+
+	# type is for display order
+	type = in_government
+
+	min_approval = loyal
+	
+	modifier = {
+		country_prestige_mult = 0.10
+		country_infamy_decay_mult = 0.05
+	}
+}
+
+ig_trait_avant_garde = {
+	icon = "gfx/interface/icons/ig_trait_icons/avant_garde.dds"
+
+	# type is for display order
+	type = happy
+
+	min_approval = happy
+	
+	modifier = {
+		country_society_tech_spread_mult = 0.10
+	}
+}
+ig_trait_solidarity = {
+	icon = "gfx/interface/icons/ig_trait_icons/solidarity.dds"
+
+	# type is for display order
+	type = in_government
+
+	min_approval = loyal
+	
+	modifier = {
+		state_radicals_from_sol_change_mult = -0.1
+	}
+}

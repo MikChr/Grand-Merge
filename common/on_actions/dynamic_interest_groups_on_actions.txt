@@ -1,0 +1,8 @@
+﻿on_monthly_pulse_country = {
+	# Events
+	events = {
+		dynamic_interest_groups_flavor.1 
+		dynamic_interest_groups_flavor.2
+		dynamic_interest_groups_flavor.3
+	}
+}

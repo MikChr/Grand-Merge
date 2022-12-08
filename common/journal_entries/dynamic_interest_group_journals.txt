@@ -1,0 +1,110 @@
+﻿###########################
+# Make Liberals in Favor of Multiculturalism
+###########################
+
+je_cosmopolitanism = {
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+	
+	is_shown_when_inactive = {
+		is_player = yes
+		NOT = { has_variable = liberals_not_racist_anymore_var }
+		has_technology_researched = psychoanalysis
+		OR = {
+			has_law = law_type:law_racial_segregation
+			has_law = law_type:law_cultural_exclusion
+		}
+	}
+
+	possible = {
+		has_technology_researched = analytical_philosophy
+		has_technology_researched = mass_propaganda
+		has_law = law_type:law_cultural_exclusion
+	}
+	
+	immediate = {
+		hidden_effect = {
+			set_variable = {
+				name = liberals_turned_cosmopolitan_var
+				value = 0
+			}
+		}
+	}
+
+	on_monthly_pulse = {
+		effect = {
+			if = {
+				limit = {
+					NOT = { has_law = law_type:law_state_religion }
+					NOT = { has_law = law_type:law_isolationism }
+					NOT = { has_law = law_type:law_colonial_exploitation }
+					NOT = { has_law = law_type:law_traditionalism }
+					has_law = law_type:law_cultural_exclusion
+					has_law = law_type:law_slavery_banned
+					OR = {
+						has_law = law_type:law_right_of_assembly
+						has_law = law_type:law_protected_speech
+					}
+					has_law = law_type:law_no_migration_controls
+					NOT = {
+						any_civil_war = {
+							civil_war_progress > 0.5
+							is_civil_war_type = revolution
+						}
+					}
+				}
+				change_variable = {
+					name = liberals_turned_cosmopolitan_var
+					add = 1
+				}
+			}
+		}
+	}
+
+	complete = {
+		scope:journal_entry = {
+			is_goal_complete = yes
+		}
+		NOT = { has_law = law_type:law_state_religion }
+		NOT = { has_law = law_type:law_isolationism }
+		NOT = { has_law = law_type:law_colonial_exploitation }
+		NOT = { has_law = law_type:law_traditionalism }
+		has_law = law_type:law_cultural_exclusion
+		has_law = law_type:law_slavery_banned
+		OR = {
+			has_law = law_type:law_right_of_assembly
+			has_law = law_type:law_protected_speech
+		}
+		has_law = law_type:law_no_migration_controls
+		NOT = {
+			any_civil_war = {
+				civil_war_progress > 0.5
+				is_civil_war_type = revolution
+			}
+		}
+	}
+
+	on_complete = {
+		trigger_event = {
+			id = dynamic_interest_group_events.1
+		}
+	}
+
+	invalid = {
+		OR = {
+			NOT = { has_law = law_type:law_cultural_exclusion }
+			NOT = { has_law = law_type:law_slavery_banned }
+		}
+	}
+
+	current_value = {
+		value = root.var:liberals_turned_cosmopolitan_var
+	}
+
+	goal_add_value = {
+		add = 60
+	}
+
+	progressbar = yes
+
+	weight = 100
+}

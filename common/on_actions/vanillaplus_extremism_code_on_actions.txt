@@ -1,0 +1,7 @@
+﻿on_monthly_pulse_country = {
+	# Extremism Events
+	events = {
+		vanillaplus_extremism_events.1 
+		vanillaplus_extremism_events.2
+	}
+}

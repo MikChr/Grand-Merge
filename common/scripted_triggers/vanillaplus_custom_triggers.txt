@@ -1,0 +1,93 @@
+﻿### State geography triggers
+
+state_is_a_new_world_area = {
+	OR = {
+		region = sr:region_canada
+		region = sr:region_new_england
+		region = sr:region_pacific_coast
+		region = sr:region_great_plains
+		region = sr:region_the_midwest
+		region = sr:region_dixie
+		region = sr:region_oceania
+		region = sr:region_mexico
+		region = sr:region_central_america
+		region = sr:region_caribbean
+		region = sr:region_brazil	
+		region = sr:region_la_plata
+		region = sr:region_andes	
+		region = sr:region_gran_colombia	
+		region = sr:region_central_america
+	}
+}
+
+### Country geography triggers
+# exists = capital checks are necessary only because we may test these triggers and scope switch to capitals before states are initialized properly
+
+country_is_a_new_world_state = {
+	exists = capital
+	capital = {
+		state_is_a_new_world_area = yes
+	}
+}
+
+
+	
+is_japan_reforming = {	
+	#trigger for western aid
+	#japan should be: ( open OR opening ) AND ( NOT closed OR closing )
+	OR = {
+		AND = {   #before restoration, aid only arrives when opening
+			has_law = law_type:law_isolationism
+			OR = {
+				AND = {
+					has_law = law_type:law_isolationism
+					OR = {
+						is_enacting_law = law_type:law_mercantilism
+						is_enacting_law = law_type:law_free_trade
+					}
+				}
+				AND = {
+					has_law = law_type:law_traditionalism
+					OR = {
+						is_enacting_law = law_type:law_agrarianism
+						is_enacting_law = law_type:law_command_economy
+						is_enacting_law = law_type:law_agrarianism
+						is_enacting_law = law_type:law_laissez_faire
+					}
+				}
+			}
+		}
+		AND = {   #during restoration, aid arrives if you are open OR opening
+			has_journal_entry = je_meiji_main
+			OR = {
+				NOT = { has_law = law_type:law_isolationism }
+				AND = {
+					has_law = law_type:law_isolationism
+					OR = {
+						is_enacting_law = law_type:law_mercantilism
+						is_enacting_law = law_type:law_free_trade
+					}
+				}
+				AND = {
+					has_law = law_type:law_traditionalism
+					OR = {
+						is_enacting_law = law_type:law_agrarianism
+						is_enacting_law = law_type:law_command_economy
+						is_enacting_law = law_type:law_agrarianism
+						is_enacting_law = law_type:law_laissez_faire
+					}
+				}
+				AND = {
+					has_law = law_type:law_closed_borders
+					OR = {
+						is_enacting_law = law_type:law_migration_controls
+						is_enacting_law = law_type:law_closed_borders
+					}
+				}
+			}
+			NOT = { is_enacting_law = law_type:law_isolationism }
+			NOT = { is_enacting_law = law_type:law_closed_borders }
+			NOT = { is_enacting_law = law_type:law_traditionalism }
+		}
+	}
+}

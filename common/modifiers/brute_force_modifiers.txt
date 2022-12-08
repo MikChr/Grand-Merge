@@ -1,0 +1,11 @@
+﻿patch_radicals_fix = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_statue_positive.dds
+	state_radicals_from_sol_change_mult = -3
+	state_loyalists_from_sol_change_mult = -0.33
+}
+
+patch_legitimacy_holdover = {
+	icon = gfx/interface/icons/ideology_icons/shinto_moralist.dds
+	country_legitimacy_base_add = 20
+	country_law_enactment_time_mult = 1
+}

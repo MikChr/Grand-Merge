@@ -1,0 +1,115 @@
+﻿suez_survey_decision = {
+	is_shown = {
+		has_interest_marker_in_region = region_nile_basin
+		OR = {
+			country_rank = rank_value:great_power
+			s:STATE_SINAI = {
+				any_scope_state = {
+					owner = ROOT
+				}
+			}
+		}
+		NOT = { has_variable = survey_suez_taken }
+		NOT = { has_global_variable = suez_canal_complete }
+	}
+
+	possible = {
+		has_technology_researched = mutual_funds
+		has_technology_researched = rotary_valve_engine
+		has_technology_researched = gantry_cranes
+		produced_bureaucracy > 1000
+	}
+	
+	when_taken = {
+		set_variable = {
+			name = survey_suez_taken
+			value = 0
+		}
+		add_modifier = {
+			name = modifier_surveying_suez
+			months = 30
+		}
+		add_journal_entry = {
+			type = je_suez_survey
+		}
+	}
+
+	ai_chance = {
+		base = 0
+		modifier = {
+			trigger = { produced_bureaucracy > 5000 }
+			add = 5
+		}
+		modifier = {
+			trigger = {
+				has_strategy = ai_strategy_armed_isolationism
+			}
+			add = -1000
+		}		
+		modifier = {
+			OR = {
+				is_diplomatic_play_committed_participant = yes
+				is_at_war = yes
+			}
+			add = -1000
+		}		
+	}
+}
+
+panama_survey_decision = {
+	is_shown = {
+		has_interest_marker_in_region = region_central_america
+		NOT = { has_variable = survey_panama_taken }
+		OR = {
+			country_rank = rank_value:great_power
+			s:STATE_PANAMA = {
+				any_scope_state = {
+					owner = ROOT
+				}
+			}
+		}
+	}
+
+	possible = {
+		has_technology_researched = malaria_prevention
+		has_technology_researched = pneumatic_tools
+		has_technology_researched = concrete_dockyards
+		produced_bureaucracy > 1000
+	}
+	
+	when_taken = {
+		set_variable = {
+			name = survey_panama_taken
+			value = 0
+		}
+		add_modifier = {
+			name = modifier_surveying_panama
+			days = 365
+		}
+		add_journal_entry = {
+			type = je_panama_survey
+		}
+	}
+
+	ai_chance = {
+		base = 0
+		modifier = {
+			trigger = { produced_bureaucracy > 5000 }
+			add = 5
+		}
+		modifier = {
+			trigger = {
+				has_strategy = ai_strategy_armed_isolationism
+			}
+			add = -1000
+		}		
+		modifier = {
+			OR = {
+				is_diplomatic_play_committed_participant = yes
+				is_at_war = yes
+			}
+			add = -1000
+		}		
+	}
+}
+
