@@ -1,5 +1,71 @@
 ﻿namespace = vanillaplus_events
 
+vanillaplus_events.1 = {
+	type = country_event
+	placement = root
+	title = vanillaplus_events.1.t
+	desc = vanillaplus_events.1.d
+	flavor = vanillaplus_events.1.f
+
+	duration = 3
+
+	event_image = {
+		video = "gfx/event_pictures/europenorthamerica_london_center.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/europenorthamerica/london_center"
+
+	icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+
+	trigger = {
+		# triggered by je_francization_of_the_metropole
+	}
+
+	immediate = {
+		set_variable = francization_complete
+	}
+
+
+	option = {
+		name = vanillaplus_events.1.a
+		default_option = yes
+		
+		s:STATE_AQUITAINE = {
+			remove_homeland = occitan
+		}
+		s:STATE_LIMOUSIN = {
+			remove_homeland = occitan
+		}
+		s:STATE_ARMAGNAC = {
+			remove_homeland = occitan
+		}
+		s:STATE_AUVERGNE = {
+			remove_homeland = occitan
+		}
+		s:STATE_LANGUEDOC = {
+			remove_homeland = occitan
+		}
+		s:STATE_PROVENCE = {
+			remove_homeland = occitan
+		}
+		s:STATE_BRITTANY = {
+			remove_homeland = breton
+		}
+		s:STATE_CORSICA = {
+			remove_homeland = corsican
+		}
+	}
+	option = {
+		name = vanillaplus_events.1.b
+		add_primary_culture = cu:occitan
+		add_primary_culture = cu:breton
+	}
+	option = {
+		name = vanillaplus_events.1.c
+	}
+}
+
 vanillaplus_events.2 = {
 	type = country_event
 	placement = root

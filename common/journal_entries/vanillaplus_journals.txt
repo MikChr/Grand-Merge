@@ -90,3 +90,41 @@
 
 	weight = 100
 }
+
+je_francization_of_the_metropole = {
+		icon = "gfx/interface/icons/event_icons/event_portrait.dds"
+	
+	is_shown_when_inactive = {
+		exists = c:FRA
+		c:FRA = ROOT
+	}
+
+	possible = {
+		has_law = law_type:law_public_schools
+		NOT = { has_variable = francization_complete }
+	}
+
+	complete = {
+		institution_investment_level = {
+            institution = institution_schools
+            value >= 5
+        }
+        has_law = law_type:law_public_schools
+	}
+
+	on_complete = {
+		trigger_event = {
+			id = vanillaplus_events.1
+		}
+	}
+
+	invalid = {
+		NOT = { has_law = law_type:law_public_schools }
+	}
+
+	goal_add_value = {
+		add = 24
+	}
+
+	weight = 100
+}
