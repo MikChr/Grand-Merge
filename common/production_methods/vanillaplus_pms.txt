@@ -117,3 +117,21 @@ pm_synth_rubber = {
 		}
 	}
 }
+
+pm_more_radios = {
+	texture = "gfx/interface/icons/production_method_icons/radios.dds"
+	unlocking_technologies = {
+		radio
+	}	
+	building_modifiers = {
+		workforce_scaled = {
+			building_input_electricity_add = 100
+			building_output_telephones_add = -40
+			building_output_radios_add = 80
+		}
+		
+		level_scaled = {
+			building_employment_engineers_add = 1000
+		}
+	}
+}
