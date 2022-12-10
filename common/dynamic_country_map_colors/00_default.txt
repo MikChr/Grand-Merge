@@ -313,10 +313,22 @@ republican_france = {
 		exists = c:FRA
 		THIS = c:FRA
 		NOT = { has_law = law_type:law_autocracy }
+		NOT = { has_law = law_type:law_cult_of_personality }
 		OR = {
 			has_law = law_type:law_parliamentary_republic
 			has_law = law_type:law_presidential_republic
 		}
+	}
+}
+
+fascist_france = {
+	color = "fascist_france_blue"
+
+	possible = {
+		exists = c:FRA
+		THIS = c:FRA
+		NOT = { has_law = law_type:law_council_republic }
+		has_law = law_type:law_cult_of_personality
 	}
 }
 
