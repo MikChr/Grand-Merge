@@ -1,6 +1,6 @@
 ﻿building_synthetic_fuel_industry = {
 	building_group = bg_synthetic_fuel
-	texture = "gfx/interface/icons/building_icons/vehicles_industry.dds"
+	texture = "gfx/interface/icons/building_icons/synthetic_industry.dds"
 	city_type = city
 	levels_per_mesh = 5
 	

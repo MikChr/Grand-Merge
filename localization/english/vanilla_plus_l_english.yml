@@ -37,6 +37,8 @@
  pm_no_synth_rubber:0 "No Rubber"
  pm_synth_rubber:0 "Synthetic Rubber"
  pmg_ownership_capital_building_synthetic_fuel_industry:0 "Ownership"
+
+ pm_more_radios:0 "Radio Production Prioritized"
  
  cult_of_personality_character_modifier:0 "Cult of Personality"
  
@@ -56,14 +58,19 @@
  
  RULER_TITLE_DICTATOR:0 "Dictator"
  RULER_TITLE_PROPHET:0 "Prophet"
+ RULER_TITLE_FASCIST_MONARCHY:0 "Divine Emperor"
+ RULER_TITLE_FASCIST_MONARCHY_F:0 "Divine Empress"
+ gov_fascist_one_party_state:0 "Fascist State"
+ gov_fascist_one_party_state_desc:0 "A form of government where the Great Leader of the Party reigns supreme in all forms aspects of life within the state."
  gov_communist_cult_of_personality:0 "Communist Regime"
  gov_communist_cult_of_personality_desc:0 "This form of communist regime is lead by a Great Leader, who leads the revolution."
  gov_fascist_theocracy:0 "Fascist Theocracy"
  gov_fascist_theocracy_desc:0 "A form of government where a theocratic-fascist regime leads the state."
- gov_fascist_monarchy:0 "Fascist Monarchy"
- gov_fascist_monarch_desc:0 "A fascist state where the monarch leads their people in fascist ideals"
+ gov_fascist_monarchy:0 "Imperial Cult"
+ gov_fascist_monarchy_desc:0 "A fascist state where the monarch rules their subjects witin fascist ideals"
  
  law_cult_of_personality:0 "Cult of Personality"
  law_cult_of_personality_desc:0 "The ruler is the state, and the ruler is the people. All must trust in their vision for the future!"
  institution_cult_of_personality:0 "Department of Propaganda"
  institution_cult_of_personality_desc:0 "Who controls the past controls the future. Who controls the present controls the past."
+ modifier_country_institution_cult_of_personality_max_investment_add:0 "Max Propaganda Department Institution Investment"

@@ -17,12 +17,35 @@ gov_fascist_state = {
 	female_ruler = "RULER_TITLE_DICTATOR"
 	
 	possible = {
-		OR = {
-			has_law = law_type:law_presidential_republic
-			has_law = law_type:law_parliamentary_republic
-		}
+		has_law = law_type:law_presidential_republic
 		has_law = law_type:law_cult_of_personality 
 		coa_fascist_trigger = yes
+	}
+}
+
+gov_fascist_one_party_state = {
+	transfer_of_power = dictatorial
+
+	male_ruler = "RULER_TITLE_DICTATOR"
+	female_ruler = "RULER_TITLE_DICTATOR"
+	
+	possible = {
+		has_law = law_type:law_parliamentary_republic
+		has_law = law_type:law_cult_of_personality 
+		coa_fascist_trigger = yes
+	}
+}
+
+gov_parliamentary_oligarchy = {
+	transfer_of_power = dictatorial
+
+	male_ruler = "RULER_TITLE_CHANCELLOR"
+	female_ruler = "RULER_TITLE_CHANCELLOR"
+	
+	possible = {
+		has_law = law_type:law_parliamentary_republic
+		has_law = law_type:law_oligarchy
+		country_has_voting_franchise = no
 	}
 }
 
@@ -42,8 +65,8 @@ gov_fascist_theocracy = {
 gov_fascist_monarchy = {
 	transfer_of_power = hereditary
 
-	male_ruler = "RULER_TITLE_MONARCH"
-	female_ruler = "RULER_TITLE_MONARCH"
+	male_ruler = "RULER_TITLE_FASCIST_MONARCHY"
+	female_ruler = "RULER_TITLE_FASCIST_MONARCHY_F"
 	
 	possible = {
 		has_law = law_type:law_monarchy
