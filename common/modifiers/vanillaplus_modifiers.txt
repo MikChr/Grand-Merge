@@ -32,4 +32,7 @@ shinto_assimilation = {
 	state_conversion_mult = 5
 }
 
-cult_of_personality_character_modifier = { }
+cult_of_personality_character_modifier = { 
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_fire_positive.dds
+	character_popularity_add = 100
+}
