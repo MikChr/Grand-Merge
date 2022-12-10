@@ -119,7 +119,7 @@ pm_synth_rubber = {
 }
 
 pm_more_radios = {
-	texture = "gfx/interface/icons/production_method_icons/radios.dds"
+	texture = "gfx/interface/icons/production_method_icons/more_radios.dds"
 	unlocking_technologies = {
 		radio
 	}	
