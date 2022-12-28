@@ -18,3 +18,14 @@ mass_propaganda = {
 		film
 	}
 }
+
+syndicalism_tech = {
+	era = era_5
+	texture = "gfx/interface/icons/invention_icons/socialism.dds"
+	category = society
+	can_research = no
+	
+	modifier = {
+		state_expected_sol_from_literacy = 1
+	}
+}
