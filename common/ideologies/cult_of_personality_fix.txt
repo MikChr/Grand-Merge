@@ -703,6 +703,7 @@ ideology_vanguardist = {
 		law_agrarianism = disapprove
 		law_traditionalism = disapprove		
 		law_laissez_faire = strongly_disapprove
+		law_syndicalism = strongly_disapprove
 	}
 	
 	lawgroup_trade_policy = {		
@@ -1013,6 +1014,15 @@ ideology_anarchist = {
 		law_autocracy = strongly_disapprove
 		law_cult_of_personality = strongly_disapprove		
 	}
+	
+	lawgroup_economic_system = {	
+		law_traditionalism = disapprove
+		law_agrarianism = disapprove
+		law_interventionism = disapprove
+		law_laissez_faire = disapprove
+		law_command_economy = neutral
+		law_syndicalism = strongly_approve
+	}
 
 	lawgroup_army_model = {
 		law_professional_army = strongly_approve
@@ -1155,7 +1165,8 @@ ideology_paternalistic = {
 		law_agrarianism = approve
 		law_interventionism = neutral
 		law_laissez_faire = disapprove
-		law_command_economy = strongly_disapprove
+		law_command_economy = disapprove
+		law_syndicalism = strongly_disapprove
 	}
 	
 	lawgroup_trade_policy = {		

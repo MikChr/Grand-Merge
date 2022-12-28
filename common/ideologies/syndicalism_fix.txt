@@ -1,0 +1,241 @@
+ideology_market_liberal = {
+	icon = "gfx/interface/icons/ideology_icons/ideology_leader/ideology_leader_market_liberal.dds"
+	
+	character_ideology = yes
+
+	lawgroup_economic_system = {	
+		law_laissez_faire = strongly_approve
+		law_interventionism = neutral
+		law_agrarianism = disapprove
+		law_traditionalism = disapprove		
+		law_command_economy = strongly_disapprove
+		law_syndicalism = strongly_disapprove
+	}
+	
+	lawgroup_childrens_rights = {
+		law_child_labor_allowed = approve
+		law_restricted_child_labor = disapprove
+		law_compulsory_primary_school = strongly_disapprove
+	}	
+	
+	lawgroup_trade_policy = {
+		law_free_trade = strongly_approve
+		law_mercantilism = disapprove
+		law_protectionism = disapprove		
+		law_isolationism = strongly_disapprove
+	}			
+
+	possible = {
+		owner = {
+			has_technology_researched = stock_exchange
+		}
+		scope:interest_group = {
+			OR = {
+				is_interest_group_type = ig_petty_bourgeoisie
+				is_interest_group_type = ig_landowners
+				is_interest_group_type = ig_intelligentsia
+				is_interest_group_type = ig_industrialists
+			}
+		}
+		scope:interest_group = {
+			NOR = {
+				has_variable = chose_vanguardism
+				has_variable = communist_ig_var
+				has_variable = chose_fascism
+				has_variable = chose_conservatism
+				has_variable = chose_ethno_nationalism
+			}
+		}
+	}
+
+	leader_weight = {
+		value = 100
+		# more likely for industrialists
+		if = {
+			limit = {
+				scope:interest_group = {
+					is_interest_group_type = ig_industrialists
+				}
+			}
+			add = 50
+		}
+		# more likely for intelligentsia, industrialists, and PB with traditional economic laws
+		if = {
+			limit = {
+				scope:interest_group = {
+					OR = {
+						is_interest_group_type = ig_petty_bourgeoisie
+						is_interest_group_type = ig_intelligentsia
+						is_interest_group_type = ig_industrialists
+					}
+				}
+				owner = {
+					OR = {
+						has_law = law_type:law_agrarianism
+						has_law = law_type:law_traditionalism
+						has_law = law_type:law_isolationism
+						has_law = law_type:law_mercantilism
+					}
+				}
+			}
+			add = 75
+		}
+		# more likely for weaker landowers when industrialists are powerful
+		if = {
+			limit = {
+				scope:interest_group = {
+					is_interest_group_type = ig_landowners
+					is_powerful = no
+				}
+				owner = {
+					ig:ig_industrialists = {
+						is_powerful = yes
+					}
+				}
+			}
+			add = 75
+		}
+		# less likely for powerful landowners under traditional laws
+		if = {
+			limit = {
+				scope:interest_group = {
+					is_interest_group_type = ig_landowners
+					is_powerful = yes
+				}
+				owner = {
+					OR = {
+						has_law = law_type:law_agrarianism
+						has_law = law_type:law_traditionalism
+					}
+				}
+			}
+			add = -75
+		}
+		# very unlikely in countries without a large urban center
+		if = {
+			limit = {
+				owner = {
+					NOT = {
+						any_scope_state = {
+							any_scope_building = {
+								is_building_type = building_urban_center
+								level >= 10
+							}
+						}
+					}
+				}
+			}
+			add = -150
+		}
+	}
+}
+
+ideology_laissez_faire = {
+	icon = "gfx/interface/icons/ideology_icons/laissez_faire.dds"
+	
+	lawgroup_economic_system = {	
+		law_laissez_faire = strongly_approve
+		law_interventionism = approve
+		law_agrarianism = neutral
+		law_traditionalism = disapprove		
+		law_command_economy = strongly_disapprove
+		law_syndicalism = strongly_disapprove
+	}
+	
+	lawgroup_trade_policy = {		
+		law_free_trade = approve	
+		law_mercantilism = neutral
+		law_protectionism = disapprove
+		law_isolationism = strongly_disapprove
+	}		
+		
+	lawgroup_childrens_rights = {
+		law_child_labor_allowed = approve
+		law_restricted_child_labor = neutral
+		law_compulsory_primary_school = disapprove
+	}
+	
+	lawgroup_labor_rights = {
+		law_serfdom_banned = neutral
+		law_serfdom = disapprove
+		law_regulatory_bodies = disapprove
+		law_worker_protections = strongly_disapprove
+	}
+}
+
+ideology_agrarian = {
+	icon = "gfx/interface/icons/ideology_icons/agrarian.dds"
+	
+	lawgroup_economic_system = {		
+		law_agrarianism = approve
+		law_traditionalism = neutral
+		law_interventionism = neutral
+		law_laissez_faire = disapprove
+		law_command_economy = strongly_disapprove
+		law_syndicalism = neutral
+	}
+	
+	lawgroup_trade_policy = {		
+		law_isolationism = approve
+		law_protectionism = approve
+		law_mercantilism = neutral
+		law_free_trade = disapprove
+	}		
+
+	lawgroup_taxation = {
+		law_consumption_based_taxation = approve
+		law_per_capita_based_taxation = neutral
+		law_proportional_taxation = neutral
+		law_graduated_taxation = neutral
+		law_land_based_taxation = disapprove
+	}	
+}
+
+ideology_proletarian = {
+	icon = "gfx/interface/icons/ideology_icons/proletarian.dds"
+
+	lawgroup_taxation = {
+		law_per_capita_based_taxation = disapprove
+		law_land_based_taxation = neutral
+		law_proportional_taxation = approve
+		law_consumption_based_taxation = neutral
+		law_graduated_taxation = strongly_approve
+	}
+
+	lawgroup_economic_system = {	
+		law_command_economy = approve
+		law_interventionism = approve
+		law_agrarianism = neutral
+		law_traditionalism = disapprove		
+		law_laissez_faire = disapprove
+		law_syndicalism = strongly_approve		
+	}
+	
+	lawgroup_trade_policy = {		
+		law_protectionism = approve
+		law_isolationism = neutral
+		law_mercantilism = neutral
+		law_free_trade = disapprove
+	}		
+	
+	lawgroup_welfare = {
+		law_old_age_pension = strongly_approve
+		law_wage_subsidies = approve
+		law_poor_laws = neutral
+		law_no_social_security = disapprove
+	}
+	
+	lawgroup_health_system = {
+		law_private_health_insurance = disapprove
+		law_no_health_system = disapprove
+		law_charitable_health_system = neutral
+		law_public_health_insurance = approve
+	}	
+	
+	lawgroup_education_system = {
+		law_public_schools = approve
+		law_private_schools = neutral
+		law_religious_schools = neutral	
+		law_no_schools = disapprove	
+	}
+}
