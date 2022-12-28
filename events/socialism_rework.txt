@@ -1,0 +1,98 @@
+﻿namespace = socialism_rework
+
+
+######################
+# Journal Events
+#####################
+
+socialism_rework.1 = {
+	type = country_event
+	placement = root
+	title = socialism_rework.1.t
+	desc = socialism_rework.1.d
+	flavor = socialism_rework.1.f
+
+	duration = 3
+
+	event_image = {
+		video = "gfx/event_pictures/europenorthamerica_political_extremism.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/europenorthamerica/london_center"
+
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	trigger = {
+		# triggered by je_completing_the_social_revolution
+	}
+
+	option = {
+		name = socialism_rework.1.a
+		default_option = yes
+		add_loyalists = {
+			value = 0.1
+		}
+		custom_tooltip = {
+			text = long_live_the_social_revolution
+			add_technology_researched = syndicalism_tech
+			set_variable = syndicalism_enabled_var
+		}
+		#more loyalists
+	}
+	option = {
+		name = socialism_rework.1.b
+		add_modifier = {
+			name = post_revolutionary_fervor
+			months = normal_modifier_time
+		}
+		custom_tooltip = {
+			text = long_live_the_social_revolution
+			add_technology_researched = syndicalism_tech
+			set_variable = syndicalism_enabled_var
+		}
+		#more legitimacy
+	}
+}
+
+socialism_rework.2 = {
+	type = country_event
+	placement = root
+	title = socialism_rework.2.t
+	desc = socialism_rework.2.d
+	flavor = socialism_rework.2.f
+
+	duration = 3
+
+	event_image = {
+		video = "gfx/event_pictures/unspecific_vandalized_storefront.bk2"
+	}
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	on_opened_soundeffect = "event:/SFX/Events/europenorthamerica/london_center"
+
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+
+	trigger = {
+		# triggered by enacting Council Republic
+	}
+
+	option = {
+		trigger = {
+			NOT = { has_variable = syndicalism_enabled_var }
+		}
+		name = socialism_rework.2.a
+		default_option = yes
+		add_journal_entry = {
+			type = je_realizing_the_social_revolution
+		}
+	}
+	option = {
+		trigger = {
+			has_variable = syndicalism_enabled_var
+		}
+		name = socialism_rework.2.b
+		default_option = yes
+		}
+	}
+}
