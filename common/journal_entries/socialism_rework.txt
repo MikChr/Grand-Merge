@@ -1,0 +1,72 @@
+﻿###########################
+# Trigger Journal for Council Republic
+###########################
+
+je_realizing_the_social_revolution= {
+	icon = "gfx/interface/icons/event_icons/event_protest.dds"
+	
+	immediate = {
+		hidden_effect = {
+			set_variable = {
+				name = recent_social_revolution_country_var
+				value = 0
+			}
+		}
+		root = {
+			save_scope_as = recent_social_revolution_country
+		}
+	}
+
+	on_monthly_pulse = {
+		effect = {
+			if = {
+				limit = {
+					NOT = {
+						any_civil_war = {
+							civil_war_progress > 0.5
+							is_civil_war_type = revolution
+						}
+					}
+				}
+				change_variable = {
+					name = recent_social_revolution_country_var
+					add = 1
+				}
+			}
+		}
+	}
+
+	complete = {
+		scope:journal_entry = {
+			is_goal_complete = yes
+		}
+		NOT = {
+			any_civil_war = {
+				civil_war_progress > 0.5
+				is_civil_war_type = revolution
+			}
+		}
+	}
+
+	on_complete = {
+		trigger_event = {
+			id = socialism_rework.1
+		}
+	}
+
+	invalid = {
+		NOT = { has_law = law_type:law_council_republic }
+	}
+
+	current_value = {
+		value = root.var:recent_social_revolution_country_var
+	}
+
+	goal_add_value = {
+		add = 60
+	}
+
+	progressbar = yes
+
+	weight = 100
+}
